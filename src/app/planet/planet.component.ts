@@ -16,18 +16,17 @@ export class PlanetComponent implements OnInit {
   constructor(private route: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit() {
-    this.getPlanet();
     this.route.params.subscribe(params => {
       this.name = params['name'];
-      console.log(this.planets);
+      this.getPlanet();
     });
   }
 
   getPlanet() {
     this.http.get<Planet[]>("assets/data/data.json").subscribe((planets) => {
-      this.planets = planets;
-      let selectedPlanet = this.planets.filter((planet: any) => planet.name === this.name);
-      console.log(selectedPlanet);
+
+      this.selectedPlanet = planets.filter((planet: any) => planet.name === this.name);
+      console.log(this.selectedPlanet);
     });
   }
 
