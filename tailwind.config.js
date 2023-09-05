@@ -2,7 +2,12 @@
 module.exports = {
   content: ["./src/**/*.{html,ts}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        "league-spartan": ["League Spartan", "sans-serif"],
+        antonio: ["Antonio", "sans-serif"],
+      },
+    },
   },
   plugins: [],
 };
