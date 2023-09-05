@@ -1,8 +1,10 @@
 <section>
   <div>
-    <img [src]="planet.images.planet" alt="" />
+    <h1 class="text-white">{{ name }}</h1>
   </div>
-  <article>
-    <h1 class="font-antonio font-normal text-[80px]">{{ planet.name }}</h1>
+  <article *ngFor="let planet of selectedPlanet">
+    <h1 class="font-antonio font-normal text-[80px]">
+      {{ selectedPlanet.content }}
+    </h1>
   </article>
 </section>
