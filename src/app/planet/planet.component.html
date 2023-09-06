@@ -1,8 +1,8 @@
 <section *ngFor="let planet of selectedPlanet">
   <section
-    class="wrapper h-full flex justify-between pt-32 pb-[87px] px-[165px]"
+    class="wrapper 2xl:h-[700px] 2xl:items-center relative px-[165px] flex justify-between gap-[300px]"
   >
-    <div class="relative">
+    <div class="relative flex flex-1 justify-center items-center">
       <img
         [src]="
           category === 'surface'
@@ -13,7 +13,15 @@
         "
         alt="Planet"
       />
-      <div class="geology absolute bottom-0" *ngIf="category === 'surface'">
+      <div
+        class="geology absolute"
+        [class]="
+          name === 'Jupiter' || name === 'Saturn'
+            ? '2xl:-bottom-1/4'
+            : '2xl:-bottom-1/2 -bottom-8'
+        "
+        *ngIf="category === 'surface'"
+      >
         <img
           [src]="planet.images.geology"
           class="object-contain"
@@ -21,7 +29,7 @@
         />
       </div>
     </div>
-    <article class="text-white">
+    <article class="text-white 2xl:mr-11">
       <h1 class="font-antonio text-left text-white font-normal text-[80px]">
         {{ planet.name }}
       </h1>
@@ -75,19 +83,24 @@
       </div>
     </article>
   </section>
-  <article class="flex absolute w-full bottom-14 justify-evenly flex-row gap-8">
-    <app-details
-      [detail]="planet.rotation"
-      [detailName]="'Rotation Time'"
-    ></app-details>
-    <app-details
-      [detail]="planet.revolution"
-      [detailName]="'Revolution Time'"
-    ></app-details>
-    <app-details [detail]="planet.radius" [detailName]="'Radius'"></app-details>
-    <app-details
-      [detail]="planet.temperature"
-      [detailName]="'Average temp.'"
-    ></app-details>
+  <article class="flex absolute w-full bottom-14 flex-row gap-8">
+    <div class="mx-auto flex gap-8">
+      <app-details
+        [detail]="planet.rotation"
+        [detailName]="'Rotation Time'"
+      ></app-details>
+      <app-details
+        [detail]="planet.revolution"
+        [detailName]="'Revolution Time'"
+      ></app-details>
+      <app-details
+        [detail]="planet.radius"
+        [detailName]="'Radius'"
+      ></app-details>
+      <app-details
+        [detail]="planet.temperature"
+        [detailName]="'Average temp.'"
+      ></app-details>
+    </div>
   </article>
 </section>
