@@ -14,3 +14,14 @@
   padding-left: 28px;
   color: white;
 }
+.categoryButton:hover {
+  background: rgba(216, 216, 216, 0.2);
+}
+.geology {
+  width: 163px;
+  height: 199px;
+
+  left: 50%;
+
+  transform: translateX(-50%) translateY(-50%);
+}

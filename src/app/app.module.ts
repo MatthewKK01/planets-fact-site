@@ -5,13 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PlanetComponent } from './planet/planet.component';
 import { HeaderComponent } from './header/header.component';
-import { HttpClientModule } from "@angular/common/http"
+import { HttpClientModule } from "@angular/common/http";
+import { DetailsComponent } from './details/details.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     PlanetComponent,
-    HeaderComponent
+    HeaderComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,

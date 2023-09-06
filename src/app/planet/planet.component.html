@@ -1,67 +1,93 @@
-<section *ngFor="let planet of selectedPlanet" class="flex justify-between">
-  <div>
-    <img
-      [src]="
-        category === 'geology'
-          ? planet.images.geology
-          : category === 'internal'
-          ? planet.images.internal
-          : planet.images.planet
-      "
-      alt="Planet"
-    />
-  </div>
-  <article class="text-white">
-    <h1 class="font-antonio text-left text-white font-normal text-[80px]">
-      {{ planet.name }}
-    </h1>
-    <p class="">
-      {{
-        category === "internal"
-          ? planet.structure.content
-          : category === "geology"
-          ? planet.geology.content
-          : planet.overview.content
-      }}
-    </p>
-    <div class="flex items-center mt-6 mb-10">
-      <span class="font-normal opacity-50">Source : </span>
-      <a class="flex gap-2" [href]="planet.overview.source" target="_blank">
-        <span class="underline text-white opacity-50 ml-1 font-bold text-sm"
-          >Wikipedia</span
-        >
+<section *ngFor="let planet of selectedPlanet">
+  <section
+    class="wrapper h-full flex justify-between pt-32 pb-[87px] px-[165px]"
+  >
+    <div class="relative">
+      <img
+        [src]="
+          category === 'surface'
+            ? planet.images.planet
+            : category === 'internal'
+            ? planet.images.internal
+            : planet.images.planet
+        "
+        alt="Planet"
+      />
+      <div class="geology absolute bottom-0" *ngIf="category === 'surface'">
         <img
+          [src]="planet.images.geology"
           class="object-contain"
-          src="/assets/images/icon-source.svg"
-          alt=""
+          alt="planet-surface"
         />
-      </a>
+      </div>
     </div>
-    <div class="buttons flex flex-col gap-4">
-      <button
-        (click)="switchCategory($event)"
-        value="overview"
-        class="categoryButton"
-        [ngClass]="category === 'overview' ? 'bg-[#EDA249]' : 'bg-none'"
-      >
-        <span class="mr-7">01</span> overview
-      </button>
-      <button
-        (click)="switchCategory($event)"
-        value="internal"
-        class="categoryButton"
-        [ngClass]="category === 'internal' ? 'bg-[#EDA249]' : 'bg-none'"
-      >
-        <span class="mr-7">02</span> internal structure
-      </button>
-      <button
-        (click)="switchCategory($event)"
-        value="surface"
-        class="categoryButton"
-        [ngClass]="category === 'surface' ? 'bg-[#EDA249]' : 'bg-none'"
-      >
-        <span class="mr-7">03</span> surface geology
-      </button>
-    </div>
+    <article class="text-white">
+      <h1 class="font-antonio text-left text-white font-normal text-[80px]">
+        {{ planet.name }}
+      </h1>
+      <p class="w-[350px]">
+        {{
+          category === "internal"
+            ? planet.structure.content
+            : category === "geology"
+            ? planet.geology.content
+            : planet.overview.content
+        }}
+      </p>
+      <div class="flex items-center mt-6 mb-10">
+        <span class="font-normal opacity-50">Source : </span>
+        <a class="flex gap-2" [href]="planet.overview.source" target="_blank">
+          <span class="underline text-white opacity-50 ml-1 font-bold text-sm"
+            >Wikipedia</span
+          >
+          <img
+            class="object-contain"
+            src="/assets/images/icon-source.svg"
+            alt=""
+          />
+        </a>
+      </div>
+      <div class="buttons flex flex-col gap-4">
+        <button
+          (click)="switchCategory($event)"
+          value="overview"
+          class="categoryButton"
+          [ngClass]="category === 'overview' ? 'bg-[#EDA249]' : 'bg-none'"
+        >
+          <span class="mr-7">01</span> overview
+        </button>
+        <button
+          (click)="switchCategory($event)"
+          value="internal"
+          class="categoryButton"
+          [ngClass]="category === 'internal' ? 'bg-[#EDA249]' : 'bg-none'"
+        >
+          <span class="mr-7">02</span> internal structure
+        </button>
+        <button
+          (click)="switchCategory($event)"
+          value="surface"
+          class="categoryButton"
+          [ngClass]="category === 'surface' ? 'bg-[#EDA249]' : 'bg-none'"
+        >
+          <span class="mr-7">03</span> surface geology
+        </button>
+      </div>
+    </article>
+  </section>
+  <article class="flex absolute w-full bottom-14 justify-evenly flex-row gap-8">
+    <app-details
+      [detail]="planet.rotation"
+      [detailName]="'Rotation Time'"
+    ></app-details>
+    <app-details
+      [detail]="planet.revolution"
+      [detailName]="'Revolution Time'"
+    ></app-details>
+    <app-details [detail]="planet.radius" [detailName]="'Radius'"></app-details>
+    <app-details
+      [detail]="planet.temperature"
+      [detailName]="'Average temp.'"
+    ></app-details>
   </article>
 </section>
