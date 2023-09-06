@@ -23,6 +23,30 @@ export class PlanetComponent implements OnInit {
     });
   }
 
+  getPlanetClass(): string {
+    switch (this.name) {
+      case 'mercury':
+        return 'bg-[#419EBB]';
+      case 'venus':
+        return 'bg-[#EDA249]';
+      // Add cases for other planets as needed
+      case 'earth':
+        return 'bg-[#6D2ED5]';
+      case 'mars':
+        return 'bg-[#D14C32]';
+      case 'jupiter':
+        return 'bg-[#D83A34]';
+      case 'saturn':
+        return 'bg-[#CD5120]';
+      case 'uranus':
+        return 'bg-[#1EC1A2]';
+      case 'neptune':
+        return 'bg-[#2D68F0]';
+      default:
+        return 'bg-none';
+    }
+  }
+
   switchCategory(e: any) {
     let value = e.target.value;
     this.category = value;
@@ -31,7 +55,7 @@ export class PlanetComponent implements OnInit {
   getPlanet() {
     this.http.get<Planet[]>("assets/data/data.json").subscribe((planets) => {
 
-      this.selectedPlanet = planets.filter((planet: any) => planet.name === this.name);
+      this.selectedPlanet = planets.filter((planet: Planet) => planet.name.toLowerCase() === this.name.toLowerCase());
       console.log(this.selectedPlanet);
     });
   }

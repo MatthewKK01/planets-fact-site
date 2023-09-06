@@ -9,11 +9,11 @@ import { Planet } from 'src/models/Planets';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  @Input() public HeaderPlanets: any;
+  @Input() public HeaderPlanets: Planet[] | undefined;
   constructor(private router: Router) { }
 
-  navigate(url: any) {
-    this.router.navigate(['planets', url]);
+  navigate(url: string) {
+    this.router.navigate(['planets', url.toLowerCase()]);
   }
 
 }

@@ -10,8 +10,8 @@
       <li *ngFor="let planet of HeaderPlanets">
         <a
           class="font-bold text-xs uppercase cursor-pointer text-white"
-          (click)="navigate(planet.name)"
-          >{{ planet.name }}</a
+          (click)="navigate(planet.name.toLowerCase())"
+          >{{ planet.name.toLowerCase() }}</a
         >
       </li>
     </ul>

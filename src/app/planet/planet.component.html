@@ -1,6 +1,6 @@
 <section *ngFor="let planet of selectedPlanet">
   <section
-    class="wrapper 2xl:h-[700px] 2xl:items-center relative px-[165px] flex justify-between gap-[300px]"
+    class="wrapper max-md:mt-36 max-md:flex-col max-md:items-center max-md:justify-center 2xl:h-[700px] 2xl:items-center relative px-[165px] flex justify-between gap-[300px]"
   >
     <div class="relative flex flex-1 justify-center items-center">
       <img
@@ -29,38 +29,42 @@
         />
       </div>
     </div>
-    <article class="text-white 2xl:mr-11">
-      <h1 class="font-antonio text-left text-white font-normal text-[80px]">
-        {{ planet.name }}
-      </h1>
-      <p class="w-[350px]">
-        {{
-          category === "internal"
-            ? planet.structure.content
-            : category === "geology"
-            ? planet.geology.content
-            : planet.overview.content
-        }}
-      </p>
-      <div class="flex items-center mt-6 mb-10">
-        <span class="font-normal opacity-50">Source : </span>
-        <a class="flex gap-2" [href]="planet.overview.source" target="_blank">
-          <span class="underline text-white opacity-50 ml-1 font-bold text-sm"
-            >Wikipedia</span
-          >
-          <img
-            class="object-contain"
-            src="/assets/images/icon-source.svg"
-            alt=""
-          />
-        </a>
+    <article
+      class="max-md:flex max-md:-mt-32 max-md:mb-7 max-md:flex-row max-md:items-center text-white 2xl:mr-11"
+    >
+      <div>
+        <h1 class="font-antonio text-left text-white font-normal text-[80px]">
+          {{ planet.name }}
+        </h1>
+        <p class="w-[350px]">
+          {{
+            category === "internal"
+              ? planet.structure.content
+              : category === "geology"
+              ? planet.geology.content
+              : planet.overview.content
+          }}
+        </p>
+        <div class="flex items-center mt-6 mb-10">
+          <span class="font-normal opacity-50">Source : </span>
+          <a class="flex gap-2" [href]="planet.overview.source" target="_blank">
+            <span class="underline text-white opacity-50 ml-1 font-bold text-sm"
+              >Wikipedia</span
+            >
+            <img
+              class="object-contain"
+              src="/assets/images/icon-source.svg"
+              alt=""
+            />
+          </a>
+        </div>
       </div>
       <div class="buttons flex flex-col gap-4">
         <button
           (click)="switchCategory($event)"
           value="overview"
           class="categoryButton"
-          [ngClass]="category === 'overview' ? 'bg-[#EDA249]' : 'bg-none'"
+          [ngClass]="category === 'overview' ? getPlanetClass() : 'bg-none'"
         >
           <span class="mr-7">01</span> overview
         </button>
@@ -68,7 +72,7 @@
           (click)="switchCategory($event)"
           value="internal"
           class="categoryButton"
-          [ngClass]="category === 'internal' ? 'bg-[#EDA249]' : 'bg-none'"
+          [ngClass]="category === 'internal' ? getPlanetClass() : 'bg-none'"
         >
           <span class="mr-7">02</span> internal structure
         </button>
@@ -76,15 +80,15 @@
           (click)="switchCategory($event)"
           value="surface"
           class="categoryButton"
-          [ngClass]="category === 'surface' ? 'bg-[#EDA249]' : 'bg-none'"
+          [ngClass]="category === 'surface' ? getPlanetClass() : 'bg-none'"
         >
           <span class="mr-7">03</span> surface geology
         </button>
       </div>
     </article>
   </section>
-  <article class="flex absolute w-full bottom-14 flex-row gap-8">
-    <div class="mx-auto flex gap-8">
+  <article class="flex absolute w-full bottom-14 max-md:static flex-row gap-8">
+    <div class="mx-auto max-md:gap-7 flex gap-8">
       <app-details
         [detail]="planet.rotation"
         [detailName]="'Rotation Time'"

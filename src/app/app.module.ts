@@ -6,14 +6,16 @@ import { AppComponent } from './app.component';
 import { PlanetComponent } from './planet/planet.component';
 import { HeaderComponent } from './header/header.component';
 import { HttpClientModule } from "@angular/common/http";
-import { DetailsComponent } from './details/details.component'
+import { DetailsComponent } from './details/details.component';
+import { ButtonComponent } from './button/button.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     PlanetComponent,
     HeaderComponent,
-    DetailsComponent
+    DetailsComponent,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,

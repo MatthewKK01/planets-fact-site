@@ -1,0 +1,16 @@
+button {
+  width: 350px;
+  height: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-transform: uppercase;
+  @apply font-league-spartan;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 25px; /* 208.333% */
+  letter-spacing: 2.571px;
+  text-align: left;
+  padding: 12px;
+  padding-left: 28px;
+  color: white;
+}
