@@ -10,8 +10,9 @@ import { Planet } from 'src/models/Planets';
 })
 export class PlanetComponent implements OnInit {
   name: string = "";
-  planets: Planet[] | any;
-  selectedPlanet: Planet[] | any;
+
+  selectedPlanet: Planet[] | undefined;
+  category: string = "overview";
 
   constructor(private route: ActivatedRoute, private http: HttpClient) { }
 
@@ -20,6 +21,11 @@ export class PlanetComponent implements OnInit {
       this.name = params['name'];
       this.getPlanet();
     });
+  }
+
+  switchCategory(e: any) {
+    let value = e.target.value;
+    this.category = value;
   }
 
   getPlanet() {
