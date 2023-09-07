@@ -5,7 +5,30 @@
     The Planets
   </h1>
 
-  <nav>
+  <nav
+    *ngIf="active"
+    class="absolute px-6 bg-[#070724] min-h-full overflow-hidden bottom-0 right-0 overscroll-none left-0 top-28 w-full z-50"
+  >
+    <ul class="flex flex-col justify-start items-start md:gap-8">
+      <li
+        class="w-full flex items-center cursor-pointer justify-between border-b-2 p-5 border-white border-opacity-20"
+        (click)="navigate(planet.name.toLowerCase())"
+        *ngFor="let planet of HeaderPlanets"
+      >
+        <div
+          [ngClass]="getPlanetClass(planet.name.toLowerCase())"
+          class="w-5 h-5 rounded-full"
+        ></div>
+        <a
+          class="font-bold max-md:text-base block text-xs uppercase cursor-pointer text-white"
+          >{{ planet.name.toLowerCase() }}</a
+        >
+        <img class="w-1 h-2" src="/assets/images/icon-chevron.svg" alt="" />
+      </li>
+    </ul>
+  </nav>
+
+  <nav class="max-sm:hidden">
     <ul class="flex justify-between items-center gap-8">
       <li *ngFor="let planet of HeaderPlanets">
         <a
@@ -16,4 +39,9 @@
       </li>
     </ul>
   </nav>
+  <div (click)="openMenu()" class="sm:hidden cursor-pointer space-y-2">
+    <div class="w-8 h-[3px] bg-white rounded-lg"></div>
+    <div class="w-8 h-[3px] bg-white rounded-lg"></div>
+    <div class="w-8 h-[3px] bg-white rounded-lg"></div>
+  </div>
 </header>
